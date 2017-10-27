@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.bqt.aidlservice">
+
+    <!-- 声明权限 -->
+    <permission
+        android:name="com.bqt.permission"
+        android:protectionLevel="normal"/>
+
+    <application
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- enabled：是否这个service能被系统实例化
+         exported：是否其它应用组件能调用这个service或同它交互
+         permission：为了启动这个service或绑定到它一个实体必须要有的权限的名称-->
+        <service
+            android:name=".MyRemoteService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.bqt.permission">
+            <intent-filter>
+                <action android:name="com.bqt.service.REMOTE_SERVICE"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
